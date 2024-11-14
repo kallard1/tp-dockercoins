@@ -19,6 +19,8 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: rng
   name: rng
   namespace: dockercoins
 spec:
@@ -34,18 +36,19 @@ spec:
       containers:
       - name: rng
         image: priximmo/rng:latest
-        ports:
-        - containerPort: 80
-          name: rng
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    app: rng
   name: rng
+  namespace: dockercoins
 spec:
   selector:
     app: rng
+  type: ClusterIP
   ports:
   - port: 80
     targetPort: 80
@@ -56,6 +59,8 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: hasher
   name: hasher
   namespace: dockercoins
 spec:
@@ -71,18 +76,19 @@ spec:
       containers:
       - name: hasher
         image: priximmo/hasher:latest
-        ports:
-        - containerPort: 80
-          name: hasher
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    app: hasher
   name: hasher
+  namespace: dockercoins
 spec:
   selector:
     app: hasher
+  type: ClusterIP
   ports:
   - port: 80
     targetPort: 80
@@ -92,6 +98,8 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: worker
   name: worker
   namespace: dockercoins
 spec:
@@ -112,6 +120,8 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: redis
   name: redis
   namespace: dockercoins
 spec:
@@ -132,10 +142,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    app: redis
   name: redis
+  namespace: dockercoins
 spec:
   selector:
     app: redis
+  type: ClusterIP
   ports:
   - port: 6379
     targetPort: 6379
@@ -146,6 +160,8 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: webui
   name: webui
   namespace: dockercoins
 spec:
@@ -161,15 +177,15 @@ spec:
       containers:
       - name: webui
         image: priximmo/webui:latest
-        ports:
-        - containerPort: 80
-          name: webui
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    app: webui
   name: webui
+  namespace: dockercoins
 spec:
   selector:
     app: webui
