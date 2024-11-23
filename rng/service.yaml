@@ -3,15 +3,15 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: rng
-  name: rng
+    app: xrng
+  name: xrng
   namespace: dockercoins
 spec:
   selector:
-    app: rng
+    app: xrng
   type: ClusterIP
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 8081
     protocol: TCP
-    name: rng
+    name: xrng
