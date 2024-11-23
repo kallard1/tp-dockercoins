@@ -25,7 +25,7 @@ spec:
           - name: rng-config-volume
             mountPath: /config.yaml
             subPath: config.yaml
-  volumea:
+  volumes:
     - name: xrng-config
       configMap:
         name: xrng-config
