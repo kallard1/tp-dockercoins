@@ -5,7 +5,7 @@ metadata:
   labels:
     app: xrng
   name: xrng
-  annotation:
+  annotations:
     kubernetes.io/change-cause: Add configmap
   namespace: dockercoins
 spec:
@@ -25,10 +25,10 @@ spec:
           - name: rng-config-volume
             mountPath: /config.yaml
             subPath: config.yaml
-    volume:
-      - name: xrng-config
-        configMap:
-          name: xrng-config
-          items:
-            - key: config.yaml
-              path: config.yaml
+  volumea:
+    - name: xrng-config
+      configMap:
+        name: xrng-config
+        items:
+          - key: config.yaml
+            path: config.yaml
