@@ -22,11 +22,11 @@ spec:
       - name: xrng
         image: priximmo/rng:latest
         volumeMounts:
-          - name: rng-config-volume
+          - name: xrng-config-volume
             mountPath: /config.yaml
             subPath: config.yaml
       volumes:
-        - name: xrng-config
+        - name: xrng-config-volume
           configMap:
             name: xrng-config
             items:
