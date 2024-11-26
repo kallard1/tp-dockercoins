@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: xrng
-        image: priximmo/rng:latest
+        image: priximmo/rng:1.1.0
         volumeMounts:
           - name: xrng-config-volume
             mountPath: /config.yaml
