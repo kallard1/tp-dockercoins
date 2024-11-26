@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: xhasher-config
+  namespace: dockercoins
+data:
+  config.yaml: |
+    port: 8082
+    sleep_duration: 10
